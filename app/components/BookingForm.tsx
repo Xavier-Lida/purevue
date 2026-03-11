@@ -5,9 +5,9 @@ import { useState } from "react";
 const SERVICES = [
   "Nettoyage vitres intérieur",
   "Nettoyage vitres extérieur",
-  "Désinfection",
-  "Poubelles",
-  "Installation film teinté",
+  "Nettoyage vitres intérieur et extérieur",
+  "Film teinté / pellicule polaire",
+  "Nettoyage et désinfection des poubelles",
   "Autre",
 ] as const;
 

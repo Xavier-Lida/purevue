@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Nettoyage & Services | Vitres, Désinfection, Film Teinté — Local & Jeune",
   description:
-    "Entreprise locale de nettoyage à Trois-Rivières, QC : vitres intérieur/extérieur, désinfection, poubelles, installation film teinté. Résidentiel, commercial et copropriété. Réservez votre RDV en ligne.",
+    "Entreprise locale de nettoyage à Trois-Rivières, QC : vitres, film teinté, nettoyage et désinfection des poubelles. Résidentiel, commercial et copropriété. Réservez votre RDV en ligne.",
 };
 
 export default function RootLayout({

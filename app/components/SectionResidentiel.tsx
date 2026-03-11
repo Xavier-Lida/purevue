@@ -10,7 +10,7 @@ export function SectionResidentiel() {
               Pour votre maison
             </h2>
             <p className="mt-4 text-slate-600">
-              Vitres, désinfection, poubelles — on s&apos;occupe de tout. Une équipe
+              Vitres, film teinté, nettoyage et désinfection des poubelles — on s&apos;occupe de tout. Une équipe
               jeune, fiable et de votre quartier. Des tarifs transparents, sans
               surprise.
             </p>

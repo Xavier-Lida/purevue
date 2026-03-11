@@ -25,6 +25,28 @@ export function ContactSection() {
               </p>
             </div>
             <div>
+              <h3 className="font-semibold text-slate-800">Téléphone</h3>
+              <p className="mt-1 text-slate-600">
+                <a
+                  href="tel:+18199444661"
+                  className="text-sky-600 underline-offset-2 hover:underline"
+                >
+                  819-944-4661
+                </a>
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-slate-800">Courriel</h3>
+              <p className="mt-1 text-slate-600">
+                <a
+                  href="mailto:purevue64@gmail.com"
+                  className="text-sky-600 underline-offset-2 hover:underline"
+                >
+                  purevue64@gmail.com
+                </a>
+              </p>
+            </div>
+            <div>
               <h3 className="font-semibold text-slate-800">Réserver</h3>
               <p className="mt-1 text-slate-600">
                 Utilisez le formulaire ci-dessus pour réserver un rendez-vous. On

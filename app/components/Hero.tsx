@@ -10,7 +10,7 @@ export function Hero() {
           <span className="block text-sky-600">pour votre quartier</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 sm:text-xl">
-          Vitres, désinfection, poubelles, film teinté. Une équipe jeune et
+          Vitres, film teinté, nettoyage et désinfection des poubelles. Une équipe jeune et
           passionnée à votre service à Trois-Rivières et environs — résidentiel,
           commercial et copropriété.
         </p>
