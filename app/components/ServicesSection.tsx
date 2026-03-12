@@ -17,9 +17,9 @@ const services = [
     ),
   },
   {
-    title: "Film teinté & pellicule polaire",
+    title: "Film teinté & pellicule solaire",
     description:
-      "Pose de film teinté ou pellicule polaire sur vos vitres. Intimité, confort et protection.",
+      "Pose de film teinté ou pellicule solaire sur vos vitres. Intimité, confort et protection.",
     icon: (
       <svg
         className="h-8 w-8"
