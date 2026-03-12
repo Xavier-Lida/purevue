@@ -25,6 +25,7 @@ export function BookingForm() {
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [windowsEstimate, setWindowsEstimate] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +43,7 @@ export function BookingForm() {
 
     const body = JSON.stringify({
       service,
+      ...(windowsEstimate && { "Nombre de fenêtres (estimation)": windowsEstimate }),
       date,
       time,
       address,
@@ -124,6 +126,29 @@ export function BookingForm() {
                     {s}
                   </option>
                 ))}
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="windowsEstimate"
+                className="mb-2 block text-sm font-medium text-slate-700"
+              >
+                Estimation du nombre de fenêtres
+              </label>
+              <select
+                id="windowsEstimate"
+                name="windowsEstimate"
+                value={windowsEstimate}
+                onChange={(e) => setWindowsEstimate(e.target.value)}
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+              >
+                <option value="">Combien de fenêtres ?</option>
+                <option value="1 à 5">1 à 5 fenêtres</option>
+                <option value="6 à 10">6 à 10 fenêtres</option>
+                <option value="11 à 20">11 à 20 fenêtres</option>
+                <option value="21 à 50">21 à 50 fenêtres</option>
+                <option value="Plus de 50">Plus de 50 fenêtres</option>
               </select>
             </div>
 
