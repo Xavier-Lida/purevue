@@ -6,7 +6,9 @@ const SERVICES = [
   "Nettoyage vitres intérieur",
   "Nettoyage vitres extérieur",
   "Nettoyage vitres intérieur et extérieur",
-  "Film teinté / pellicule polaire",
+  "Film teinté / pellicule solaire",
+  "Nettoyage à haute pression",
+  "Nettoyage gouttière",
   "Nettoyage et désinfection des poubelles",
   "Autre",
 ] as const;
