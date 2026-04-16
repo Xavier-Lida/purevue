@@ -81,7 +81,7 @@ export function BookingForm() {
     >
       <div className="mx-auto max-w-2xl">
         <h2 className="mb-2 text-center text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
-          Réservez votre rendez-vous
+          Demandez une estimation gratuite
         </h2>
         <p className="mb-10 text-center text-slate-600">
           Choisissez votre service, date et heure. On vous recontacte pour
