@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
@@ -14,9 +16,23 @@ export function Header() {
           </a>
           <a
             href="#reserver"
-          className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-600"
+            className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-600"
           >
             Réserver
+          </a>
+          <a
+            href="#"
+            aria-label="Accueil Pure Vue"
+            className="ml-2 block h-10 w-16"
+          >
+            <Image
+              src="/Pure-Vue.png"
+              alt="Logo Pure Vue"
+              width={1355}
+              height={818}
+              className="h-full object-contain object-center"
+              priority
+            />
           </a>
         </nav>
       </div>
