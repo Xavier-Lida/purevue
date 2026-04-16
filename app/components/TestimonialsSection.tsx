@@ -1,13 +1,13 @@
 const TESTIMONIALS = [
   {
-    name: "Marie L.",
+    name: "Simon T.",
     rating: 5,
-    text: "Service impeccable ! Vitres nickel, équipe ponctuelle et sympathique. Je recommande à 100 %.",
+    text: "Franchement les gars m’ont impressionné le travail était impeccable et en 2 heures ils avaient finis.",
   },
   {
-    name: "Jean-Pierre D.",
+    name: "Jacinthe T.",
     rating: 5,
-    text: "On fait affaire avec eux pour notre commerce depuis 2 mois. Toujours satisfait.",
+    text: "De jeunes entrepreneurs rigoureux et professionnels qui se sont mobilisés rapidement pour nous offrir des services de qualité! Nous recommandons cette entreprise.Le Centre de psychologie Laviolette",
   },
   {
     name: "Sophie M.",
