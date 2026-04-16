@@ -22,12 +22,12 @@ export function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [service, setService] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const [windowsEstimate, setWindowsEstimate] = useState("");
+  const [serviceTiming, setServiceTiming] = useState("");
+  const [contactMoment, setContactMoment] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,12 +44,12 @@ export function BookingForm() {
     setPending(true);
 
     const body = JSON.stringify({
+      name,
+      email,
       service,
-      ...(windowsEstimate && { "Nombre de fenêtres (estimation)": windowsEstimate }),
-      date,
-      time,
-      address,
       phone,
+      "Quand voulez-vous le service": serviceTiming,
+      "Meilleur moment pour me contacter": contactMoment,
     });
 
     const res = await fetch(endpoint, {
@@ -68,10 +68,11 @@ export function BookingForm() {
   };
 
   const isValid =
+    name.trim() &&
+    email.trim() &&
     service &&
-    date &&
-    time &&
-    address &&
+    serviceTiming &&
+    contactMoment &&
     phone.replace(/\D/g, "").length >= 10;
 
   return (
@@ -84,8 +85,7 @@ export function BookingForm() {
           Demandez une estimation gratuite
         </h2>
         <p className="mb-10 text-center text-slate-600">
-          Choisissez votre service, date et heure. On vous recontacte pour
-          confirmer.
+          Remplissez ce court formulaire. On vous recontacte rapidement.
         </p>
 
         {submitted ? (
@@ -107,12 +107,75 @@ export function BookingForm() {
                 {error}
               </div>
             )}
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-medium text-slate-700"
+                >
+                  Nom
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="mb-2 block text-sm font-medium text-slate-700"
+                >
+                  Numéro de téléphone
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  minLength={10}
+                  placeholder="514 555 1234"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+                />
+                {phone && phone.replace(/\D/g, "").length < 10 && (
+                  <p className="mt-1 text-sm text-amber-600">
+                    Entrez un numéro valide (10 chiffres)
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-medium text-slate-700"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="vous@exemple.com"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+              />
+            </div>
+
             <div>
               <label
                 htmlFor="service"
                 className="mb-2 block text-sm font-medium text-slate-700"
               >
-                Type de service
+                Choix du service
               </label>
               <select
                 id="service"
@@ -123,9 +186,9 @@ export function BookingForm() {
                 className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
               >
                 <option value="">Sélectionnez un service</option>
-                {SERVICES.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
+                {SERVICES.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
                   </option>
                 ))}
               </select>
@@ -133,107 +196,48 @@ export function BookingForm() {
 
             <div>
               <label
-                htmlFor="windowsEstimate"
+                htmlFor="serviceTiming"
                 className="mb-2 block text-sm font-medium text-slate-700"
               >
-                Estimation du nombre de fenêtres
+                Quand voulez-vous le service?
               </label>
               <select
-                id="windowsEstimate"
-                name="windowsEstimate"
-                value={windowsEstimate}
-                onChange={(e) => setWindowsEstimate(e.target.value)}
+                id="serviceTiming"
+                name="serviceTiming"
+                value={serviceTiming}
+                onChange={(e) => setServiceTiming(e.target.value)}
+                required
                 className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
               >
-                <option value="">Combien de fenêtres ?</option>
-                <option value="1 à 5">1 à 5 fenêtres</option>
-                <option value="6 à 10">6 à 10 fenêtres</option>
-                <option value="11 à 20">11 à 20 fenêtres</option>
-                <option value="21 à 50">21 à 50 fenêtres</option>
-                <option value="Plus de 50">Plus de 50 fenêtres</option>
+                <option value="">Sélectionnez un délai</option>
+                <option value="Cette semaine">Cette semaine</option>
+                <option value="Ce mois-ci">Ce mois-ci</option>
+                <option value="Dans 2 mois">Dans 2 mois</option>
+                <option value="Dans 3 mois ou plus">Dans 3 mois ou plus</option>
               </select>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="date"
-                  className="mb-2 block text-sm font-medium text-slate-700"
-                >
-                  Date souhaitée
-                </label>
-                <input
-                  id="date"
-                  name="date"
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  required
-                  min={new Date().toISOString().split("T")[0]}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="time"
-                  className="mb-2 block text-sm font-medium text-slate-700"
-                >
-                  Heure préférée
-                </label>
-                <input
-                  id="time"
-                  name="time"
-                  type="time"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  required
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
-                />
-              </div>
-            </div>
-
             <div>
               <label
-                htmlFor="address"
+                htmlFor="contactMoment"
                 className="mb-2 block text-sm font-medium text-slate-700"
               >
-                Adresse
+                Meilleur moment pour les contacter
               </label>
-              <input
-                id="address"
-                name="address"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+              <select
+                id="contactMoment"
+                name="contactMoment"
+                value={contactMoment}
+                onChange={(e) => setContactMoment(e.target.value)}
                 required
-                placeholder="123 rue Example, Ville"
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="phone"
-                className="mb-2 block text-sm font-medium text-slate-700"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
               >
-                Numéro de cellulaire
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                minLength={10}
-                placeholder="514 555 1234"
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
-              />
-              {phone && phone.replace(/\D/g, "").length < 10 && (
-                <p className="mt-1 text-sm text-amber-600">
-                  Entrez un numéro valide (10 chiffres)
-                </p>
-              )}
+                <option value="">Sélectionnez un moment</option>
+                <option value="Matin">Matin</option>
+                <option value="Midi">Midi</option>
+                <option value="Soir">Soir</option>
+                <option value="H24">Peu importe</option>
+              </select>
             </div>
 
             <button
