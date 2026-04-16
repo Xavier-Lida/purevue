@@ -222,7 +222,7 @@ export function BookingForm() {
                 htmlFor="contactMoment"
                 className="mb-2 block text-sm font-medium text-slate-700"
               >
-                Meilleur moment pour les contacter
+                Meilleur moment me contacter
               </label>
               <select
                 id="contactMoment"
