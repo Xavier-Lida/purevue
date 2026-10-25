@@ -1,0 +1,94 @@
+/* ===== Scène animée (components/house-scene.tsx) ===== */
+@keyframes pv-sbulb-on {
+  0%,
+  6% {
+    fill: #3a4652;
+  }
+  9%,
+  86% {
+    fill: #ffeec4;
+  }
+  92%,
+  100% {
+    fill: #3a4652;
+  }
+}
+.pv-sbulb {
+  fill: #3a4652;
+  animation:
+    pv-sbulb-on 12s ease-out infinite,
+    pv-twinkle 2.4s ease-in-out infinite;
+}
+@keyframes pv-win-on {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  56%,
+  88% {
+    opacity: 1;
+  }
+  94%,
+  100% {
+    opacity: 0;
+  }
+}
+/* fenêtres toujours allumées */
+.pv-win {
+  opacity: 1;
+}
+@keyframes pv-arm-reach {
+  from {
+    transform: rotate(-150deg);
+  }
+  to {
+    transform: rotate(-112deg);
+  }
+}
+.pv-arm-reach {
+  animation: pv-arm-reach 0.9s ease-in-out infinite alternate;
+}
+@keyframes pv-arm-wave {
+  from {
+    transform: rotate(150deg);
+  }
+  to {
+    transform: rotate(205deg);
+  }
+}
+.pv-arm-wave {
+  animation: pv-arm-wave 0.7s ease-in-out infinite alternate;
+}
+@keyframes pv-smoke {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(14px, -60px) scale(1.8);
+    opacity: 0;
+  }
+}
+.pv-smoke {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pv-smoke 4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pv-sbulb {
+    animation: none;
+    fill: #ffeec4;
+  }
+  .pv-win {
+    animation: none;
+    opacity: 1;
+  }
+  .pv-arm-reach,
+  .pv-arm-wave,
+  .pv-smoke {
+    animation: none;
+  }
+}

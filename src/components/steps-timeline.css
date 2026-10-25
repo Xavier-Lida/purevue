@@ -1,0 +1,62 @@
+/* Étapes : ampoule éteinte -> allumée, carte qui s'illumine */
+.pv-step-socket {
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  background: #24323e;
+  z-index: 2;
+}
+.pv-step-bulb2 {
+  width: 20px;
+  height: 30px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  background: #cfd5da;
+  z-index: 2;
+  transition:
+    background 0.5s ease var(--d),
+    box-shadow 0.6s ease var(--d);
+}
+.pv-step.is-lit .pv-step-bulb2 {
+  background: radial-gradient(circle at 45% 35%, #fffaf0, #ffd98a 70%);
+  box-shadow:
+    0 0 18px 6px rgba(255, 205, 120, 0.8),
+    0 0 50px 16px rgba(255, 190, 90, 0.35);
+  animation: pv-twinkle 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--d) + 0.6s);
+}
+.pv-step-card {
+  opacity: 0.55;
+  transform: translateY(18px) scale(0.98);
+  transition:
+    opacity 0.6s ease calc(var(--d) + 0.15s),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--d) + 0.15s),
+    box-shadow 0.6s ease calc(var(--d) + 0.15s),
+    border-color 0.6s ease calc(var(--d) + 0.15s);
+}
+.pv-step.is-lit .pv-step-card {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(227, 180, 90, 0.55);
+  box-shadow: 0 24px 60px -24px rgba(227, 160, 60, 0.45);
+}
+.pv-step.is-lit .pv-step-card:hover {
+  transform: translateY(-4px);
+}
+.pv-step-icon {
+  background: #13202b0d;
+  color: #4d5b66;
+  transition:
+    background 0.5s ease calc(var(--d) + 0.3s),
+    color 0.5s ease calc(var(--d) + 0.3s);
+}
+.pv-step.is-lit .pv-step-icon {
+  background: #0d1b26;
+  color: #e3b45a;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pv-step-card,
+  .pv-step-bulb2,
+  .pv-step-icon {
+    transition: none;
+  }
+}
