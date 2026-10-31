@@ -180,6 +180,7 @@ export type NoelPackage = {
   goodToKnow: readonly string[];
   highlight: boolean;
   image?: string; // image d'exemple (public/forfaits/...). Sans image = dessin.
+  renewal?: number; // prix de réinstallation dès la 2e année (lumières déjà fournies)
 };
 
 export const noelPackages: readonly NoelPackage[] = [
@@ -207,6 +208,7 @@ export const noelPackages: readonly NoelPackage[] = [
   {
     slug: "signature",
     image: "/forfaits/signature-2.jpg",
+    renewal: 449,
     name: "Signature",
     price: 749,
     tagline: "Clé en main, rien à acheter",
@@ -222,7 +224,8 @@ export const noelPackages: readonly NoelPackage[] = [
       "Démontage en janvier et entreposage des lumières",
     ],
     goodToKnow: [
-      "Les lumières restent à nous et sont réinstallées l'an prochain si vous renouvelez",
+      "Dès la 2e année : 449 $ seulement. Les lumières sont déjà payées, vous payez juste le service",
+      "Les lumières restent à nous : on les entrepose et on les entretient pour vous",
       "Maison de 1 ou 2 étages",
     ],
     highlight: true,
@@ -230,6 +233,7 @@ export const noelPackages: readonly NoelPackage[] = [
   {
     slug: "prestige",
     image: "/forfaits/prestige-3.jpg",
+    renewal: 899,
     name: "Prestige",
     price: 1199,
     tagline: "Dedans comme dehors",
@@ -243,7 +247,10 @@ export const noelPackages: readonly NoelPackage[] = [
       "Couronne de porte d'entrée incluse",
       "Ramassage du sapin en janvier",
     ],
-    goodToKnow: ["Maison de 1 ou 2 étages"],
+    goodToKnow: [
+      "Dès la 2e année : 899 $. Les lumières sont déjà fournies",
+      "Maison de 1 ou 2 étages",
+    ],
     highlight: false,
   },
   {
@@ -311,7 +318,11 @@ export const noelFaq = [
   },
   {
     q: "Les lumières du forfait Signature sont-elles à moi?",
-    a: "Non, elles restent à nous. On les entrepose, on les entretient et on les réinstalle chez vous l'an prochain si vous renouvelez.",
+    a: "Non, elles restent à nous, et c'est à votre avantage : on les entrepose, on les entretient, et dès la 2e année vous payez seulement le service. Signature passe de 749 $ à 449 $, Prestige de 1 199 $ à 899 $.",
+  },
+  {
+    q: "Qu'est-ce qui est décoré exactement?",
+    a: "La bordure du toit de la façade avant, celle qu'on voit de la rue. Avec Signature et Prestige, on ajoute un arbre ou une haie devant la maison. Les côtés et l'arrière ne sont pas inclus : appelez-nous pour un prix sur mesure.",
   },
   {
     q: "Et si une lumière brûle pendant la saison?",

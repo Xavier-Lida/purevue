@@ -62,6 +62,11 @@ export default async function PackagePage({ params }: Props) {
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/75">{pkg.summary}</p>
             <p className="mt-3 text-sm text-white/50">{noelSeason.priceNote}</p>
+            {pkg.renewal && (
+              <p className="mt-4 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-gold-soft">
+                Dès la 2e année : {pkg.renewal} $ seulement (lumières déjà fournies)
+              </p>
+            )}
             <Link href="#reserver" className="mt-7 inline-flex rounded-full bg-gold px-6 py-3.5 font-semibold text-night">
               Réserver le forfait {pkg.name}
             </Link>

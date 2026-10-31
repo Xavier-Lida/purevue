@@ -38,6 +38,11 @@ export default function PackageCards({ exclude }: { exclude?: string }) {
               <span className={`font-display text-4xl font-semibold ${dark ? "text-gold" : "text-ink"}`}>{money(pkg.price)}</span>
               <span className={`text-xs ${dark ? "text-white/60" : "text-ink-soft"}`}>prix fixe</span>
             </p>
+            {pkg.renewal && (
+              <p className={`mt-3 inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold ${dark ? "bg-white/10 text-gold-soft" : "bg-gold/15 text-gold-dark"}`}>
+                Dès la 2e année : {money(pkg.renewal)}
+              </p>
+            )}
             <ul className="mt-5 flex-1 space-y-2.5">
               {pkg.includes.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-[15px]">
