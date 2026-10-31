@@ -162,7 +162,7 @@ export const booking: { url: string } = {
 
 export const noelSeason = {
   slogan: "On lave vos vitres l'été. On les illumine l'hiver.",
-  happyClients: 150, // clients satisfaits cette année (affiché « 150+ »)
+  happyClients: 225, // clients satisfaits cette année (affiché « 225+ »)
   bookingNote: "Places limitées pour la saison",
   installWindow: "Installation de début novembre à la mi-décembre",
   removalWindow: "Démontage en janvier inclus",
