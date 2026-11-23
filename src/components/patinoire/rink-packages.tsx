@@ -32,8 +32,8 @@ export default function RinkPackages({ images = {} }: { images?: Record<string, 
             )}
             <div className="-mx-2 -mt-2 mb-5 overflow-hidden rounded-2xl ring-1 ring-black/10">
               {image ? (
-                <div className="relative aspect-[2/1] w-full">
-                  <Image src={image.src} alt={`Patinoire de ${pkg.size}, forfait ${pkg.name}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                <div className="relative aspect-[4/3] w-full">
+                  <Image src={image.src} alt={image.example ? `Image d'exemple : patinoire de cour, forfait ${pkg.name}` : `Patinoire de ${pkg.size}, forfait ${pkg.name}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                   {image.example && (
                     <span className="absolute bottom-1.5 right-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-medium text-white/85">
                       Image d&apos;exemple

@@ -22,8 +22,8 @@ Tout est dans **`src/lib/patinoire.ts`** : prix, forfaits, tailles de base, plac
 
 ## Images des forfaits
 
-Chaque forfait affiche un dessin. Pour le remplacer, dépose une image dans
-**`public/patinoire/forfaits/`** (format large, environ 1200 x 600) :
+Chaque forfait affiche l'image trouvée dans **`public/patinoire/forfaits/`**
+(format 4:3, environ 1200 x 900). Sans image, le forfait affiche un dessin.
 
 - `compact.jpg`, `classique.jpg`, `pro.jpg` : vraies photos de tes installations
 - `compact-exemple.jpg`, `classique-exemple.jpg`, `pro-exemple.jpg` : images générées,
