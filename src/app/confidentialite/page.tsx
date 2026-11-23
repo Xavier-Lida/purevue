@@ -13,7 +13,7 @@ const sections = [
   {
     title: "Ce qu'on recueille",
     body: [
-      "Quand vous remplissez un formulaire ou prenez rendez-vous : votre nom, votre numéro de téléphone, votre courriel si vous le donnez, votre région, le forfait qui vous intéresse et les dimensions approximatives de votre cour.",
+      "Quand vous remplissez un formulaire ou prenez rendez-vous : votre nom, votre numéro de téléphone, votre courriel si vous le donnez, votre région, le forfait qui vous intéresse et le moment où vous préférez qu'on vous rappelle.",
       "Si vous l'acceptez dans la fenêtre de consentement : des données de navigation (pages vues, clics, défilement) servant à mesurer l'achalandage et à améliorer le site.",
     ],
   },

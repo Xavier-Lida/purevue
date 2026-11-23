@@ -63,7 +63,7 @@ export default async function PostPage({ params }: Props) {
           <div className="mt-12 rounded-xl2 bg-night p-6 text-white">
             <p className="font-display text-2xl">Pas envie de monter dans l&apos;échelle?</p>
             <p className="mt-2 text-white/70">On installe vos lumières à prix fixe, démontage en janvier inclus.</p>
-            <Link href="/#reserver" className="mt-5 inline-flex rounded-full bg-gold px-5 py-3 font-semibold text-night">
+            <Link href="/noel#reserver" className="mt-5 inline-flex rounded-full bg-gold px-5 py-3 font-semibold text-night">
               Réserver ma date
             </Link>
           </div>

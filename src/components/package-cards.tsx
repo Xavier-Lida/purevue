@@ -53,7 +53,7 @@ export default function PackageCards({ exclude }: { exclude?: string }) {
             </ul>
             <div className="mt-6 grid gap-2">
               <Link
-                href="/#reserver"
+                href="/noel#reserver"
                 className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold ${
                   dark ? "bg-gold text-night" : isTree ? "bg-pine text-white" : "bg-night text-white"
                 }`}

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { site } from "@/lib/site";
 
-// Demandes de rappel de la page /patinoire.
+// Demandes de rappel de l'offre patinoire (page d'accueil).
 // Même fonctionnement que /api/contact, mais le courriel du client est facultatif :
 // on a surtout besoin de son numéro pour le rappeler.
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? site.email;
@@ -32,7 +32,6 @@ export async function POST(request: Request) {
   const plan = text("plan");
   const region = text("region");
   const moment = text("moment");
-  const yard = text("yard");
 
   if (!name || phone.replace(/\D/g, "").length < 10) {
     return NextResponse.json(
@@ -50,7 +49,6 @@ export async function POST(request: Request) {
       plan,
       region,
       moment,
-      yard,
     });
     return NextResponse.json({ ok: true, delivered: false });
   }
@@ -64,7 +62,6 @@ export async function POST(request: Request) {
     <p><strong>Courriel :</strong> ${escapeHtml(email || "Non fourni")}</p>
     <p><strong>Forfait :</strong> ${escapeHtml(plan || "Non précisé")}</p>
     <p><strong>Région :</strong> ${escapeHtml(region || "Non précisée")}</p>
-    <p><strong>Cour :</strong> ${escapeHtml(yard || "Non précisée")}</p>
     <p><strong>Quand rappeler :</strong> ${escapeHtml(moment || "Dès que possible")}</p>
   `;
 

@@ -19,7 +19,7 @@ const inputClass =
 // La demande part par courriel (Formspree si configuré sur Vercel, sinon /api/patinoire)
 // et une copie va dans le Google Sheet : une demande n'est jamais perdue.
 export default function RinkForm() {
-  const { plan, setPlan, yard } = useRink();
+  const { plan, setPlan } = useRink();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -48,8 +48,7 @@ export default function RinkForm() {
     setStatus("loading");
     setErrorMsg("");
 
-    const yardText = yard ? `${yard.width} x ${yard.length} pi` : "non précisée";
-    const message = [`Forfait : ${plan}`, `Région : ${data.region}`, `Cour : ${yardText}`, `Rappel : ${data.moment}`].join("\n");
+    const message = [`Forfait : ${plan}`, `Région : ${data.region}`, `Rappel : ${data.moment}`].join("\n");
     const payload = {
       name,
       phone,
@@ -58,7 +57,6 @@ export default function RinkForm() {
       plan,
       region: data.region,
       moment: data.moment,
-      yard: yardText,
       message,
       _subject: `Patinoire : ${name} (${plan})`,
     };
@@ -70,7 +68,7 @@ export default function RinkForm() {
           mode: "no-cors",
           body: new URLSearchParams({
             [rink.sheet.contactField]: `${email || "sans courriel"} | ${phone} | ${name}`,
-            [rink.sheet.detailField]: `${rink.sheet.source} | ${data.region} | ${plan} | cour ${yardText} | rappel ${data.moment}`,
+            [rink.sheet.detailField]: `${rink.sheet.source} | ${data.region} | ${plan} | rappel ${data.moment}`,
           }),
         })
           .then(() => true)

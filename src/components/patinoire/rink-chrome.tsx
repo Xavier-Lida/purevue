@@ -4,20 +4,19 @@ import { site } from "@/lib/site";
 import { rink } from "@/lib/patinoire";
 import Logo from "@/components/logo";
 
-// En-tête, pied de page et barre mobile de la page patinoire.
+// En-tête, pied de page et barre mobile de la page d'accueil (offre patinoire).
 // Séparés de site-chrome.tsx pour que les boutons mènent au formulaire patinoire.
 const nav = [
-  { href: "/patinoire#grandeur", label: "Quelle grandeur?" },
-  { href: "/patinoire#forfaits", label: "Forfaits" },
-  { href: "/patinoire#garanties", label: "Garanties" },
-  { href: "/patinoire#faq", label: "Questions" },
+  { href: "/#forfaits", label: "Forfaits" },
+  { href: "/#garanties", label: "Garanties" },
+  { href: "/#faq", label: "Questions" },
 ];
 
 export function RinkHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white shadow-[0_6px_24px_-16px_rgba(13,27,38,0.35)]">
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 md:h-24 md:px-5">
-        <Link href="/patinoire" aria-label={`${site.name} : patinoires de cour`} className="flex items-center py-2">
+        <Link href="/" aria-label={`${site.name} : patinoires de cour`} className="flex items-center py-2">
           <span className="md:hidden"><Logo height={44} priority /></span>
           <span className="hidden md:block"><Logo height={60} priority /></span>
         </Link>
@@ -36,7 +35,7 @@ export function RinkHeader() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <Link href="/patinoire#reserver" className="rounded-full bg-night px-4 py-2 text-sm font-semibold text-white">
+          <Link href="/#reserver" className="rounded-full bg-night px-4 py-2 text-sm font-semibold text-white">
             Réserver
           </Link>
         </div>
@@ -70,10 +69,10 @@ export function RinkFooter() {
         <div>
           <p className="font-semibold text-white">Liens</p>
           <ul className="mt-2 space-y-1.5">
-            <li><Link href="/patinoire#forfaits" className="hover:text-white">Forfaits</Link></li>
-            <li><Link href="/patinoire#faq" className="hover:text-white">Questions fréquentes</Link></li>
+            <li><Link href="/#forfaits" className="hover:text-white">Forfaits</Link></li>
+            <li><Link href="/#faq" className="hover:text-white">Questions fréquentes</Link></li>
+            <li><Link href="/noel" className="hover:text-white">Lumières de Noël</Link></li>
             <li><Link href="/confidentialite" className="hover:text-white">Confidentialité</Link></li>
-            <li><Link href="/" className="hover:text-white">Nos autres services</Link></li>
           </ul>
         </div>
       </div>
@@ -96,7 +95,7 @@ export function RinkMobileCta() {
         <Phone className="h-4 w-4" />
         Appeler
       </a>
-      <Link href="/patinoire#reserver" className="inline-flex items-center justify-center rounded-full bg-gold py-3 text-sm font-semibold text-night">
+      <Link href="/#reserver" className="inline-flex items-center justify-center rounded-full bg-gold py-3 text-sm font-semibold text-night">
         Réserver ma date
       </Link>
     </div>

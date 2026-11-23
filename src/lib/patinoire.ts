@@ -1,5 +1,5 @@
 // ===== Patinoires de cour clé en main =====
-// Tout le contenu de la page /patinoire est ici.
+// Tout le contenu de la page d'accueil (offre patinoire) est ici.
 // Change un prix, un texte ou un lien : la page se met à jour partout.
 
 type RinkConfig = {
@@ -11,6 +11,7 @@ type RinkConfig = {
   installTime: string;
   spotsNote: string;
   priceNote: string;
+  sizesNote: string;
   paymentNote: string;
   launch: { active: boolean; spots: number; slug: string; price: number };
   teardownPrice: number;
@@ -42,6 +43,7 @@ export const rink: RinkConfig = {
   installTime: "une demi-journée",
   spotsNote: "Places limitées avant Noël",
   priceNote: "Prix fixe, taxes en sus. Matériel, installation et premier arrosage inclus.",
+  sizesNote: "Deux tailles de base : 16 x 28 pi et 20 x 40 pi. Une autre grandeur? Appelez-nous.",
   paymentNote:
     "Aucun paiement en ligne. On confirme la grandeur, la date et le dépôt avec vous par téléphone.",
 
@@ -190,7 +192,7 @@ export const rinkFaq = [
   },
   {
     q: "J'ai besoin de quoi?",
-    a: "Une cour assez grande (le calculateur vous le dit) et un robinet extérieur ou un accès à l'eau. C'est tout.",
+    a: "Une cour assez grande pour la patinoire choisie, avec environ 2 pieds libres de chaque côté, et un robinet extérieur ou un accès à l'eau. C'est tout.",
   },
   {
     q: "Ma cour est en pente, ça marche?",
@@ -217,19 +219,6 @@ export const rinkFaq = [
     a: "On vous conseille d'aviser votre assureur habitation que vous aurez une patinoire dans la cour. C'est rapide et ça évite les mauvaises surprises.",
   },
 ];
-
-// Recommandation du calculateur : la plus grande patinoire qui entre dans la cour,
-// en gardant 2 pieds de dégagement de chaque côté.
-export const RINK_CLEARANCE = 4;
-
-export function recommendRink(yardWidth: number, yardLength: number) {
-  const sizes = [...rinkPackages]
-    .filter((p) => p.slug !== "pro")
-    .sort((a, b) => b.width * b.length - a.width * a.length);
-  return (
-    sizes.find((p) => yardWidth >= p.width + RINK_CLEARANCE && yardLength >= p.length + RINK_CLEARANCE) ?? null
-  );
-}
 
 // Même résultat sur le serveur et dans le navigateur (pas de toLocaleString).
 export function money(n: number) {

@@ -1,18 +1,23 @@
 "use client";
 
+import Image from "next/image";
 import { Camera, Check } from "lucide-react";
 import { money, rink, rinkPackages } from "@/lib/patinoire";
+import type { RinkPackageImage } from "@/lib/patinoire-images";
 import { track, useRink } from "@/components/patinoire/rink-context";
+import RinkPackageArt from "@/components/patinoire/rink-package-art";
 
 export const LAUNCH_PLAN = "Place de lancement (Classique)";
 
-// Les forfaits. Cliquer « Choisir » préremplit le formulaire en bas de page.
-export default function RinkPackages() {
+// Les forfaits, chacun avec sa taille de base. Cliquer « Choisir » préremplit le formulaire en bas de page.
+// images : photos trouvées dans public/patinoire/forfaits/ (sinon, un dessin).
+export default function RinkPackages({ images = {} }: { images?: Record<string, RinkPackageImage> }) {
   const { setPlan } = useRink();
   return (
     <div className="grid gap-5 md:grid-cols-3">
       {rinkPackages.map((pkg) => {
         const dark = pkg.highlight;
+        const image = images[pkg.slug];
         return (
           <article
             key={pkg.slug}
@@ -25,6 +30,20 @@ export default function RinkPackages() {
                 {pkg.badge}
               </span>
             )}
+            <div className="-mx-2 -mt-2 mb-5 overflow-hidden rounded-2xl ring-1 ring-black/10">
+              {image ? (
+                <div className="relative aspect-[2/1] w-full">
+                  <Image src={image.src} alt={`Patinoire de ${pkg.size}, forfait ${pkg.name}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  {image.example && (
+                    <span className="absolute bottom-1.5 right-1.5 rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-medium text-white/85">
+                      Image d&apos;exemple
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <RinkPackageArt variant={pkg.slug} label={pkg.size} />
+              )}
+            </div>
             <div className="flex items-center justify-between gap-3">
               <h3 className="text-lg font-bold">{pkg.name}</h3>
               <span className={`rounded-full px-3 py-1 text-xs font-semibold ${dark ? "bg-white/10 text-gold-soft" : "bg-gold/15 text-gold-dark"}`}>

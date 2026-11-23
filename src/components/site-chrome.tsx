@@ -4,9 +4,9 @@ import { site, noelPackages } from "@/lib/site";
 import Logo from "@/components/logo";
 
 const nav = [
-  { href: "/#forfaits", label: "Forfaits" },
-  { href: "/#contrats", label: "Nos contrats" },
-  { href: "/#equipe", label: "Équipe" },
+  { href: "/noel#forfaits", label: "Forfaits" },
+  { href: "/noel#contrats", label: "Nos contrats" },
+  { href: "/noel#equipe", label: "Équipe" },
   { href: "/blogue", label: "Blogue" },
 ];
 
@@ -33,7 +33,7 @@ export function SiteHeader() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <Link href="/#reserver" className="rounded-full bg-night px-4 py-2 text-sm font-semibold text-white">
+          <Link href="/noel#reserver" className="rounded-full bg-night px-4 py-2 text-sm font-semibold text-white">
             Réserver
           </Link>
         </div>
@@ -72,8 +72,8 @@ export function SiteFooter() {
           <p className="font-semibold text-white">Ressources</p>
           <ul className="mt-2 space-y-1.5">
             <li><Link href="/blogue" className="hover:text-white">Blogue</Link></li>
-            <li><Link href="/#faq" className="hover:text-white">Questions fréquentes</Link></li>
-            <li><Link href="/#reserver" className="hover:text-white">Réserver</Link></li>
+            <li><Link href="/noel#faq" className="hover:text-white">Questions fréquentes</Link></li>
+            <li><Link href="/noel#reserver" className="hover:text-white">Réserver</Link></li>
           </ul>
         </div>
       </div>
@@ -96,7 +96,7 @@ export function MobileCta() {
         <Phone className="h-4 w-4" />
         Appeler
       </a>
-      <Link href="/#reserver" className="inline-flex items-center justify-center rounded-full bg-gold py-3 text-sm font-semibold text-night">
+      <Link href="/noel#reserver" className="inline-flex items-center justify-center rounded-full bg-gold py-3 text-sm font-semibold text-night">
         Réserver ma date
       </Link>
     </div>

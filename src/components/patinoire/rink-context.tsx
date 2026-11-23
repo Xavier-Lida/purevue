@@ -2,15 +2,10 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 
-// Ce que le visiteur a choisi (forfait, grandeur de sa cour), partagé entre
-// le calculateur, les forfaits et le formulaire.
-type Yard = { width: number; length: number };
-
+// Le forfait choisi par le visiteur, partagé entre les forfaits et le formulaire.
 type RinkState = {
   plan: string;
   setPlan: (plan: string) => void;
-  yard: Yard | null;
-  setYard: (yard: Yard) => void;
 };
 
 const RinkContext = createContext<RinkState | null>(null);
@@ -19,8 +14,7 @@ export const UNDECIDED = "Je ne sais pas encore";
 
 export function RinkProvider({ children }: { children: React.ReactNode }) {
   const [plan, setPlan] = useState(UNDECIDED);
-  const [yard, setYard] = useState<Yard | null>(null);
-  const value = useMemo(() => ({ plan, setPlan, yard, setYard }), [plan, yard]);
+  const value = useMemo(() => ({ plan, setPlan }), [plan]);
   return <RinkContext.Provider value={value}>{children}</RinkContext.Provider>;
 }
 

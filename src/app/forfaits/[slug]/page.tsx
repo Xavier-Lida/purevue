@@ -53,7 +53,7 @@ export default async function PackagePage({ params }: Props) {
           <LightString count={22} />
           <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 pb-14 pt-6 md:grid-cols-[1.2fr_1fr] md:px-5 md:pb-20">
             <div>
-            <Link href="/#forfaits" className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-white">
+            <Link href="/noel#forfaits" className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-white">
               <ArrowLeft className="h-4 w-4" /> Tous les forfaits
             </Link>
             <p className="mt-6"><Eyebrow dark>Forfait {pkg.idealFor.toLowerCase()}</Eyebrow></p>
