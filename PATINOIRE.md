@@ -19,6 +19,7 @@ Tout est dans **`src/lib/patinoire.ts`** : prix, forfaits, tailles de base, plac
 | Activer le pixel Meta | `metaPixelId` : colle l'identifiant du pixel |
 | Couper Clarity | `clarityId: ""` |
 | Changer la durée annoncée | `installTime` |
+| Changer la photo du haut de page | `heroImage` : `compact`, `classique` ou `pro` |
 
 ## Images des forfaits
 

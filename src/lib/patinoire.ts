@@ -12,6 +12,7 @@ type RinkConfig = {
   spotsNote: string;
   priceNote: string;
   sizesNote: string;
+  heroImage: string;
   paymentNote: string;
   launch: { active: boolean; spots: number; slug: string; price: number };
   teardownPrice: number;
@@ -44,6 +45,9 @@ export const rink: RinkConfig = {
   spotsNote: "Places limitées avant Noël",
   priceNote: "Prix fixe, taxes en sus. Matériel, installation et premier arrosage inclus.",
   sizesNote: "Deux tailles de base : 16 x 28 pi et 20 x 40 pi. Une autre grandeur? Appelez-nous.",
+  // Photo du haut de page : celle de quel forfait? "compact", "classique" ou "pro".
+  // (Une vraie photo déposée dans public/patinoire/ passe avant.)
+  heroImage: "pro",
   paymentNote:
     "Aucun paiement en ligne. On confirme la grandeur, la date et le dépôt avec vous par téléphone.",
 

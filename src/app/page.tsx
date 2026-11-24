@@ -21,6 +21,7 @@ import RinkTracking from "@/components/patinoire/rink-tracking";
 // (Les lumières de Noël, qui étaient ici, sont maintenant à /noel.)
 // Photos et vidéos : dépose-les dans public/patinoire/ (01-nom.jpg, v1-nom.mp4 + v1-nom.poster.jpg)
 // et elles apparaissent toutes seules, la première photo en haut de page.
+// Sans vraie photo, le haut de page montre la photo d'un forfait (rink.heroImage).
 // Images des forfaits : public/patinoire/forfaits/ (voir src/lib/patinoire-images.ts).
 
 const minPrice = Math.min(...rinkPackages.map((p) => p.price));
@@ -45,6 +46,10 @@ export default function Home() {
   const heroPhoto = rinkMedia.photos[0];
   const gallery = rinkMedia.photos.slice(1);
   const packageImages = getRinkPackageImages();
+  // Haut de page : une vraie photo (public/patinoire/) passe avant; sinon la photo du forfait
+  // choisi dans rink.heroImage; sinon celle d'un autre forfait; le dessin en dernier recours.
+  const heroPackage = [rinkPackages.find((p) => p.slug === rink.heroImage), ...rinkPackages].find((p) => p && packageImages[p.slug]);
+  const heroPackageImage = heroPackage ? packageImages[heroPackage.slug] : undefined;
 
   const steps = rinkSteps.map((s, i) => ({
     title: s.title,
@@ -124,6 +129,20 @@ export default function Home() {
                 <div className="relative mx-auto aspect-[4/3] w-full max-w-[540px] overflow-hidden rounded-xl2 shadow-lift ring-1 ring-white/10">
                   <Image src={heroPhoto.src} alt="Patinoire de cour installée par notre équipe" fill priority sizes="(max-width: 768px) 100vw, 540px" className="object-cover" />
                 </div>
+              ) : heroPackage && heroPackageImage ? (
+                <figure className="relative mx-auto aspect-[4/3] w-full max-w-[540px] overflow-hidden rounded-xl2 shadow-lift ring-1 ring-white/10">
+                  <Image
+                    src={heroPackageImage.src}
+                    alt={heroPackageImage.example ? `Image d'exemple : patinoire de cour, forfait ${heroPackage.name}` : `Patinoire de cour, forfait ${heroPackage.name}`}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 540px"
+                    className="object-cover"
+                  />
+                  <figcaption className="absolute bottom-2 right-2 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white/90">
+                    {heroPackageImage.example ? "Image d'exemple · " : ""}Forfait {heroPackage.name}
+                  </figcaption>
+                </figure>
               ) : (
                 <RinkIllustration className="mx-auto w-full max-w-[300px] md:max-w-[400px]" />
               )}
